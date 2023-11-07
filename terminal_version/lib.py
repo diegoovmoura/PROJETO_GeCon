@@ -1,6 +1,8 @@
 from tqdm import tqdm
 from time import sleep
 
+path_to_registers = './Data/registers.txt'
+
 
 LINES = "======================================="
 
@@ -38,6 +40,7 @@ def login():
         return [False, user]
 
 def registrar():
+    registers = open(path_to_registers, 'a')
     print(LINES)
     print("Informe seu usuario e sua senha")
     print(LINES)
@@ -55,3 +58,5 @@ def registrar():
     for i in tqdm(range(100)):
         sleep(0.01)
     registros[user] = passw
+    registers.write(user + ' ' + passw + '\n')
+    registers.close()
