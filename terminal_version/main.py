@@ -48,7 +48,7 @@ def main():
         print("Digite 4 - para sair")
         print(lib.LINES)
         flag = input()
- # ===================================ANALIZAR ESCOLHA=======================================
+ #====================================ANALIZAR ESCOLHA=======================================
         if (flag == "1"):
             break
         elif (flag == "2"):
