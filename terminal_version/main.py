@@ -45,7 +45,7 @@ def main():
         print("Digite 1 - para fazer uma reserva da area de lazer")
         print("Digite 2 - para ver os status de manutenções")
         print("Digite 3 - para fazer um registro de melhoria")
-        print("Digite 4 - para sair")
+        print("Digite 4 = para sair")
         print(lib.LINES)
         flag = input()
  # ===================================ANALIZAR ESCOLHA=======================================
