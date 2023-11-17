@@ -1,6 +1,6 @@
 from time import sleep
 
-path_to_registers = './Data/registers.txt'
+path_to_registers = './Arquivos/registers.txt'
 
 
 LINES = "======================================="
@@ -57,3 +57,14 @@ def registrar():
     registros[user] = passw
     registers.write(user + ' ' + passw + '\n')
     registers.close()
+
+def leitura_dados(ano, mes):
+    with open(f'Fluxo_caixa_condominio.txt') as arquivo:
+        for linha in arquivo: 
+            partes = linha.strip().split(',')
+            ano_arquivo = int(partes[0])
+            mes_arquivo = int(partes[1])
+            if ano_arquivo == ano and mes_arquivo == mes:
+                receita = float(partes[2])
+                despesa = float(partes[3])
+                return receita, despesa
