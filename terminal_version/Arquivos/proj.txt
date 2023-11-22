@@ -1,0 +1,4 @@
+piscina,reformando,1 mes, construcao
+jardim,pronto,3 dias,plantas novas
+escada,nao comecou,4 dias,pintura velha
+portaria,reformando,1 semana,portao mais tecnologico

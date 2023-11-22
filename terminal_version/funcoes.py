@@ -2,6 +2,7 @@ from time import sleep
 
 path_to_registers = './Arquivos/registers.txt'
 fluxo_caixa = './terminal_version/Arquivos/Fluxo_caixa_condominio.txt'
+proj = './Arquivos/proj.txt'
 
 LINES = "======================================="
 
@@ -70,3 +71,27 @@ def leitura_dados(ano, mes):
                 receita = float(partes[2])
                 despesa = float(partes[3])
                 return receita, despesa
+            
+def ler_projeto(nome_arquivo):
+    projetos = []
+    with open(nome_arquivo, 'r') as arquivo:
+        for linha in arquivo:
+            projetos.append(linha.strip().split(','))
+    return projetos
+
+def listar_nomes_obras(projetos):
+    print("\nNomes das Obras:")
+    for projeto in projetos:
+        print(f"- {projeto[0]}")
+    print()
+
+def mostrar_status(projetos, nome_obra):
+    for projeto in projetos:
+        if projeto[0].lower() == nome_obra.lower():
+            print("\nDetalhes da Obra:")
+            print(f"Lugar: {projeto[0]}")
+            print(f"Status: {projeto[1]}")
+            print(f"Duração: {projeto[2]}")
+            print(f"Motivo: {projeto[3]}\n")
+            return
+    print("Obra não encontrada.\n")

@@ -40,6 +40,7 @@ def main():
     sleep(1)
     os.system("cls")
     while(True):
+        os.system("cls")
         print(f"{funcoes.font.OKCYAN}Login como: {flag2[1]}{funcoes.font.NORMAL}")
         print(funcoes.LINES)
         print("Digite 1 - para fazer uma reserva da area de lazer")
@@ -49,15 +50,22 @@ def main():
         print("Digite 5 - para sair")
         print(funcoes.LINES)
         flag = input()
- #====================================ANALIZAR ESCOLHA=======================================
+ #====================================ANALIsAR ESCOLHA=======================================
         if (flag == "1"):
             break
+        #=================CONSULTAR STATUS DE MANUTENÇÃO===========================
         elif (flag == "2"):
-            break
+            projetos = funcoes.ler_projeto(funcoes.proj)
+            funcoes.listar_nomes_obras(projetos)
+            while True:
+                escolha = input("Digite o nome da obra para ver os detalhes ou 'sair' para encerrar: ").lower()
+                if escolha == 'sair':
+                    break
+                funcoes.mostrar_status(projetos, escolha)
         elif (flag == "3"):
             break
-        elif (flag == "4"):
         #=================CONSULTAR FLUXO DE CAIXA===========================
+        elif (flag == "4"):
             print("Seja bem vindo ao sistema de consulta de fluxo de caixa do condomínio")
             lista_meses = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"]
             while True:
