@@ -88,9 +88,9 @@ def main():
 
 #=========================================FAZER REGISTRO DE MELHORIAS=====================================================
         elif (flag == "3"):
-            os.system("cls")
             while True:
-                funcoes.texto("Categorias para solicitação: \n1 - Manutenção\n2 - Segurança\n3 - Comportamento\n4 - Serviço\n5 - Voltar para o menu")
+                os.system("cls")
+                funcoes.texto("Categorias para solicitação: \n1 - Manutenção\n2 - Segurança\n3 - Comportamento\n4 - Serviço\n5 - para editar solicitação\n6 - Voltar para o menu")
                 select_categoria=int(input("Favor, selecionar uma das categorias acima: "))
 
                 if select_categoria == 1:
@@ -166,6 +166,9 @@ def main():
                             print(linha, end="")
 
                 elif select_categoria == 5:
+                    funcoes.editar_solicitacao()
+
+                elif select_categoria == 6:
                     break
 
                 else:

@@ -129,3 +129,29 @@ def remover_reserva():
     
     print("Reserva removida com sucesso!")
     continuar = input("pressione enter para continuar: ")
+
+
+def editar_solicitacao():
+    titulo = input("Titulo da solicitação a ser editada: ")
+
+    perguntas = []
+    with open(f"{melhorias}Manutenção_{titulo}.txt", "r", encoding="utf-8") as file:
+        linhas = file.readlines()
+
+    for i in range(len(linhas)):
+        aux = linhas[i].split(":")
+        perguntas.append(aux[0])
+
+    qsv1_ed=input(f"{perguntas[0]}: ")
+    qsv2_ed=input(f"{perguntas[1]}: ")
+    qsv3_ed=input(f"{perguntas[2]}: ")
+    data = [qsv1_ed, qsv2_ed, qsv3_ed]
+
+
+    with open(f"{melhorias}Manutenção_{titulo}.txt", "w", encoding="utf-8") as file:
+        for i in range(len(linhas)):
+            aux = linhas[i].split(":")
+            file.write(f"{aux[0]}: {data[i]}\n")
+
+    print("Solicitação alterada com sucesso!")
+    continuar = input("pressione enter para continuar: ")
