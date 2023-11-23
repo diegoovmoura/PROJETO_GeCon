@@ -50,10 +50,10 @@ def main():
         print("Digite 5 - para sair")
         print(funcoes.LINES)
         flag = input()
- #====================================ANALIsAR ESCOLHA=======================================
+#===================================================ANALIsAR ESCOLHA=============================================
         if (flag == "1"):
             break
-        #=================CONSULTAR STATUS DE MANUTENÇÃO===========================
+#=========================================CONSULTAR STATUS DE MANUTENÇÃO===========================================
         elif (flag == "2"):
             projetos = funcoes.ler_projeto(funcoes.proj)
             funcoes.listar_nomes_obras(projetos)
@@ -62,9 +62,11 @@ def main():
                 if escolha == 'sair':
                     break
                 funcoes.mostrar_status(projetos, escolha)
+
+#=========================================FAZER REGISTRO DE MELHORIAS=====================================================
         elif (flag == "3"):
             break
-        #=================CONSULTAR FLUXO DE CAIXA===========================
+#=========================================CONSULTAR FLUXO DE CAIXA=====================================================
         elif (flag == "4"):
             print("Seja bem vindo ao sistema de consulta de fluxo de caixa do condomínio")
             lista_meses = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"]
