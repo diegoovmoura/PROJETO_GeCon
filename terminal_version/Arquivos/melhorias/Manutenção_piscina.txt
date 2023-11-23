@@ -1,0 +1,3 @@
+natureza do problema: vazamento
+localização exata do problema: area de lazer
+O problema está afetando outras áreas: sim

@@ -1,6 +1,7 @@
 from time import sleep
 
 path_to_registers = './Arquivos/registers.txt'
+melhorias = './Arquivos/melhorias/'
 fluxo_caixa = './terminal_version/Arquivos/Fluxo_caixa_condominio.txt'
 proj = './Arquivos/proj.txt'
 
@@ -17,11 +18,6 @@ class font:
     BOLD = '\033[1m'
     UNDERLINE = '\033[4m'
 
-registros = {"diego": "123",
-             "hugo": "333",
-             "renato": "123"
-             }
-
 
 def texto(intrucoes:str):
     print("=======================================")
@@ -33,31 +29,32 @@ def login():
     user = input(f"{font.WARNING}USUÁRIO:{font.NORMAL} ")
     passw = input(f"{font.WARNING}SENHA:{font.NORMAL} ")
 
-    if user in registros:
-        if registros[user] == passw:
+    with open(path_to_registers, "r", encoding="utf-8") as file:
+        linhas = file.readlines()
+
+    for linha in linhas:
+        linha = linha.replace("\n", "")
+        aux = linha.split(";")
+        if user == aux[0] and passw == aux[1]:
             return [True, user]
-        else:
-            return [False, user]
-    else:
-        return [False, user]
+        
+    return [False, user]
 
 def registrar():
-    registers = open(path_to_registers, 'a')
-    texto("Digite seu usuário e senha")
+    with open(path_to_registers, 'a') as registers:
+        texto("Digite seu usuário e senha")
 
-    while(True):
-        user = input(f"{font.WARNING}USUÁRIO:{font.NORMAL} ")
-        passw = input(f"{font.WARNING}SENHA:{font.NORMAL} ")
-        passw2 = input(f"{font.WARNING}CONFIRME SUA SENHA: {font.NORMAL}")
+        while(True):
+            user = input(f"{font.WARNING}USUÁRIO:{font.NORMAL} ")
+            passw = input(f"{font.WARNING}SENHA:{font.NORMAL} ")
+            passw2 = input(f"{font.WARNING}CONFIRME SUA SENHA: {font.NORMAL}")
 
-        if passw2 == passw:
-            break
-        else:
-            print(f"{font.FAIL}Senhas incongruentes tente novamente{font.NORMAL}")
+            if passw2 == passw:
+                break
+            else:
+                print(f"{font.FAIL}Senhas incongruentes tente novamente{font.NORMAL}")
 
-    registros[user] = passw
-    registers.write(user + ' ' + passw + '\n')
-    registers.close()
+        registers.write(f"{user};{passw}\n")
 
 # Consulta dos dados do fluxo de caixa
 def leitura_dados(ano, mes):
