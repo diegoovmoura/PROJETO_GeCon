@@ -201,9 +201,9 @@ def main():
                     try:
                         mes_escolhido= int(input("Escolha um número correspondente ao mês: "))
                         if mes_escolhido >=1 and mes_escolhido<=12:
-                                break
+                            break
                         else:
-                                print("Digite um número válido, entre 1 e 12")
+                            print("Digite um número válido, entre 1 e 12")
                     except ValueError:
                         print("Digite um número entre 1 e 12")
 

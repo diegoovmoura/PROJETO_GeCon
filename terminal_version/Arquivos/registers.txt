@@ -1,2 +1,4 @@
 diego;123
 evelyn;123
+joao;123
+hugo;123
