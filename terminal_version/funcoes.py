@@ -1,6 +1,7 @@
 from time import sleep
 
 path_to_registers = './Arquivos/registers.txt'
+reserva = './Arquivos/reservas.txt'
 melhorias = './Arquivos/melhorias/'
 fluxo_caixa = './terminal_version/Arquivos/Fluxo_caixa_condominio.txt'
 proj = './Arquivos/proj.txt'
@@ -92,3 +93,39 @@ def mostrar_status(projetos, nome_obra):
             print(f"Motivo: {projeto[3]}\n")
             return
     print("Obra não encontrada.\n")
+
+def fazer_reserva(area, nome, data):
+    with open(f"{reserva}", "a", encoding="utf-8") as file:
+        file.write(f"{area.capitalize()};{nome.capitalize()};{data}\n")
+
+def mostrar_reservas():
+    with open(f"{reserva}", "r", encoding="utf-8") as file:
+        linhas  = file.readlines()
+
+    print("Reservas feitas: ")
+    for linha in linhas:
+        linha = linha.replace("\n", "")
+        aux = linha.split(";")
+        print(f"Area: {aux[0]} \nFeita por: {aux[1]} \nData: {aux[2]}")
+        print()
+
+    continuar = input("pressione enter para continuar: ")
+
+def remover_reserva():
+
+    nome = input("Digite o nome registrado da reserva: ").capitalize()
+    area = input("Digite a area em que deseja cancelar: ").capitalize()
+
+    with open(f"{reserva}", "r", encoding="utf-8") as file:
+        linhas  = file.readlines()
+
+    with open(f"{reserva}", "w", encoding="utf-8") as file:
+        for linha in linhas:
+            aux = linha.replace("\n", "")
+            aux = aux.split(";")
+
+            if nome != aux[1] and area != aux[0]:
+                file.write(linha)
+    
+    print("Reserva removida com sucesso!")
+    continuar = input("pressione enter para continuar: ")

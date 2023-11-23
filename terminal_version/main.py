@@ -43,16 +43,39 @@ def main():
         os.system("cls")
         print(f"{funcoes.font.OKCYAN}Login como: {flag2[1]}{funcoes.font.NORMAL}")
         print(funcoes.LINES)
-        print("Digite 1 - para fazer uma reserva da area de lazer")
+        print("Digite 1 - para fazer ou cancelar uma reserva da area de lazer")
         print("Digite 2 - para ver os status de manutenções")
         print("Digite 3 - para fazer um registro de melhoria")
         print("Digite 4 - para consultar fluxo de caixa")
         print("Digite 5 - para sair")
         print(funcoes.LINES)
         flag = input()
-#===================================================ANALIsAR ESCOLHA=============================================
+#===================================================FAZER RESERVA=============================================
         if (flag == "1"):
-            break
+            while True:
+                os.system("cls")
+                funcoes.texto("1 - Fazer reserva\n2 - Mostrar reservas\n3 - Cancelar uma reserva\n4 - Sair")
+
+                escolha = input("Escolha uma opção (1/2/3/4): ")
+
+                if escolha == "1":
+                    area = input("Digite a area da reserva (Piscina/Churrasqueira/PlayGround): ")
+                    nome = input("Digite o nome para a reserva: ")
+                    data = input("Digite a data da reserva: ")
+                    funcoes.fazer_reserva(area, nome, data)
+
+                elif escolha == "2":
+                    funcoes.mostrar_reservas()
+
+                elif escolha == "3":
+                    funcoes.remover_reserva()
+
+                elif escolha == "4":
+                    print("Saindo do sistema de reservas. Até mais!")
+                    break
+
+                else:
+                    print("Opção inválida. Tente novamente.")
 #=========================================CONSULTAR STATUS DE MANUTENÇÃO===========================================
         elif (flag == "2"):
             projetos = funcoes.ler_projeto(funcoes.proj)
