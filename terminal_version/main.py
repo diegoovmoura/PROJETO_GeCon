@@ -103,9 +103,29 @@ def main():
                         file.write(f"natureza do problema: {pergunta_1}\nlocalização exata do problema: {pergunta_2}\nO problema está afetando outras áreas: {pergunta_3}\n")
 
                     status = input("Gostaria de verificar o status da manutenção?\nS - sim\nN - não: ")
+                    status_1={"Problema:":pergunta_1,"Localização:":pergunta_2,"Está afetando outras áreas?":pergunta_3} 
                     if status.upper() == "S":
-                        with open(f"{funcoes.melhorias}Manutenção_{solicitacao}.txt", "r", encoding="utf-8") as file:
-                            linhas = file.readlines()
+                        for e in status_1:
+                           print(e+status_1[e]) 
+                        continuar=input("Pressione qualquer tecla para continuar")
+
+                    status_2={"Sugestão/Preocupaçã: ":pergunta_1,"Incidente(s): ":pergunta_2,"Áreas específicas: ":pergunta_3}
+                    if status.upper() == "S":
+                        for e in status_2:
+                           print(e+status_2[e]) 
+                        continuar=input("Pressione qualquer tecla para continuar")
+
+                    status_3={"Situação: ":pergunta_1,"Áreas comuns: ":pergunta_2,"Observação: ":pergunta_3}
+                    if status.upper() == "S":
+                        for e in status_3:
+                           print(e+status_3[e]) 
+                        continuar=input("Pressione qualquer tecla para continuar")
+
+                    status_4={"Serviço solicitado: ":pergunta_1,"Localização: ":pergunta_2,"Detalhes: ":pergunta_3}
+                    if status.upper() == "S":
+                        for e in status_4:
+                           print(e+status_4[e]) 
+                        continuar=input("Pressione qualquer tecla para continuar")
 
                         for linha in linhas:
                             print(linha, end="")
@@ -209,15 +229,16 @@ def main():
 
                 receita1, despesa1 = funcoes.leitura_dados(ano_escolhido, mes_escolhido)
                 saldo = receita1 - despesa1
-
-                if receita1 is not None and despesa1 is not None:
-                    print("\nO fluxo de caixa em {} de {} é: ".format(mes_escolhido, ano_escolhido))
-                    print("Receita: R$ {}".format(receita1))
-                    print("Despesa: R$ {}".format(despesa1))
-                    print("Saldo do mês: R$ {}".format(saldo))
-
-                else: 
-                    print("Ainda não temos dados referentes ao mês e ano correspondentes!")     
+                try:
+                    if receita1 is not None and despesa1 is not None:
+                        print("\nO fluxo de caixa em {} de {} é: ".format(mes_escolhido, ano_escolhido))
+                        print("Receita: R$ {}".format(receita1))
+                        print("Despesa: R$ {}".format(despesa1))
+                        print("Saldo do mês: R$ {}".format(saldo))
+                    else: 
+                        print("Ainda não temos dados referentes ao mês e ano correspondentes!") 
+                except TypeError:
+                    print("Não há dados referentes ao ano e mês correspondentes")    
 
                 teste = int(input("\n1- Consultar outro ano/mês \n2 - voltar para menu principal\nO que você deseja fazer agora?  "))
                 if(teste == 1):

@@ -68,6 +68,8 @@ def leitura_dados(ano, mes):
                 receita = float(partes[2])
                 despesa = float(partes[3])
                 return receita, despesa
+     
+    return 0, 0
             
 def ler_projeto(nome_arquivo):
     projetos = []
